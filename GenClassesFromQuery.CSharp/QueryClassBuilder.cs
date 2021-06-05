@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public class QueryClassBuilder
     {
@@ -68,7 +68,7 @@ namespace GenClassesFromDatabase.Services
         }
 
         public string GetResultClass(
-            DataTable schemaTable, string queryName, bool beautifyColumnNames, bool isResultClass = true, bool withAttributes = false, 
+            DataTable schemaTable, string queryName, bool beautifyColumnNames, bool isResultClass = true, bool withAttributes = false,
             Action<StringBuilder> insert = null, Action<StringBuilder> append = null, IEnumerable<string> ancestors = null)
         {
             StringBuilder output = new StringBuilder();
@@ -100,7 +100,7 @@ namespace GenClassesFromDatabase.Services
 
             output.AppendLine("}"); // end class
 
-            return output.ToString();            
+            return output.ToString();
         }
 
         /// <summary>
@@ -226,12 +226,12 @@ namespace GenClassesFromDatabase.Services
                     {
                         yield return $"[MaxLength({Size})]";
                     }
-                    
+
                     if (!IsNullable)
                     {
                         yield return $"[Required]";
                     }
-                }                
+                }
             }
         }
     }

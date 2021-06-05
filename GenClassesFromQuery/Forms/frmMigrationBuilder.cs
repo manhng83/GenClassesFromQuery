@@ -1,4 +1,7 @@
-﻿using SqlIntegration.Library;
+﻿using GenClassesFromQuery.Interfaces;
+using GenClassesFromQuery.Models;
+using GenClassesFromQuery.Services;
+using SqlIntegration.Library;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,23 +10,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms.Library;
 using WinForms.Library.Extensions.ComboBoxes;
-using GenClassesFromDatabase.Interfaces;
-using GenClassesFromDatabase.Models;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmMigrationBuilder : Form, ISaveable
     {
-        JsonSDI<DataMigration> _doc = new JsonSDI<DataMigration>(".json", "Json Files|*.json", "Save changes?");
-        
+        private JsonSDI<DataMigration> _doc = new JsonSDI<DataMigration>(".json", "Json Files|*.json", "Save changes?");
+
         private DataMigrator _migrator;
-        private DataMigrator.MigrationResult _migrationResult;        
+        private DataMigrator.MigrationResult _migrationResult;
 
         public frmMigrationBuilder()
         {
             InitializeComponent();
-            dgvSteps.AutoGenerateColumns = false;            
+            dgvSteps.AutoGenerateColumns = false;
             dgvParams.AutoGenerateColumns = false;
         }
 
@@ -46,7 +46,7 @@ namespace GenClassesFromDatabase.Forms
         }
 
         private void ShowProgress(object sender, SqlMigrator<int>.Progress e)
-        {            
+        {
             pbMain.Value = e.PercentComplete;
             tslProgress.Text = $"{e.TotalRows:n0} total rows, {e.RowsMigrated:n0} migrated ({e.PercentComplete}%), {e.RowsSkipped:n0} skipped";
         }
@@ -110,7 +110,7 @@ namespace GenClassesFromDatabase.Forms
 
         private async void btnOpen_Click(object sender, EventArgs e)
         {
-            await _doc.PromptOpenAsync();            
+            await _doc.PromptOpenAsync();
         }
 
         private async void toolStripButton1_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace GenClassesFromDatabase.Forms
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }            
+            }
         }
 
         private async void frmMigrationBuilder_FormClosing(object sender, FormClosingEventArgs e)
@@ -153,7 +153,7 @@ namespace GenClassesFromDatabase.Forms
                 consoleTextBox1.Clear();
                 tslProgress.Text = "Querying...";
                 tslCancel.Visible = true;
-                pbMain.Visible = true;                
+                pbMain.Visible = true;
                 var step = (dgvSteps.DataSource as BindingSource).Current as DataMigration.Step;
 
                 pbValidation.Image = imageList1.Images["loading"];
@@ -164,7 +164,7 @@ namespace GenClassesFromDatabase.Forms
             catch (Exception exc)
             {
                 pbValidation.Image = imageList1.Images["fail"];
-                lblStepResult.Text = exc.Message;                
+                lblStepResult.Text = exc.Message;
             }
             finally
             {
@@ -247,7 +247,7 @@ namespace GenClassesFromDatabase.Forms
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }            
+            }
         }
 
         private void llImportKeyMap_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => btnImportKeyMap_Click(sender, new EventArgs());

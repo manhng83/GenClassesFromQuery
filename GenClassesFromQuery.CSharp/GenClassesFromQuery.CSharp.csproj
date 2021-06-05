@@ -3,15 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>AO.GenClassesFromDatabase.CSharp</PackageId>
+    <PackageId>AO.GenClassesFromQuery.CSharp</PackageId>
     <Authors>Adam O'Neil</Authors>
     <Company>Adam O'Neil</Company>
-    <Product>AO.GenClassesFromDatabase.CSharp</Product>
+    <Product>AO.GenClassesFromQuery.CSharp</Product>
     <Copyright>Copyright (c) 2021 Adam O'Neil</Copyright>
-    <Description>C# generator for GenClassesFromDatabase SQL Client</Description>
+    <Description>C# generator for GenClassesFromQuery SQL Client</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/adamfoneil/Postulate.GenClassesFromDatabase</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/adamfoneil/Postulate.GenClassesFromDatabase</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/adamfoneil/Postulate.GenClassesFromQuery</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/adamfoneil/Postulate.GenClassesFromQuery</RepositoryUrl>
     <Version>1.0.4</Version>
   </PropertyGroup>
 

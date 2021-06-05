@@ -1,8 +1,8 @@
-﻿using SqlSchema.Library.Models;
+﻿using GenClassesFromQuery.Services;
+using SqlSchema.Library.Models;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmSetAlias : Form
     {

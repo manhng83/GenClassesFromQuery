@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace GenClassesFromDatabase.Services.Providers
+namespace GenClassesFromQuery.Services.Providers
 {
     public class SqlServerQueryProvider : QueryProvider
     {

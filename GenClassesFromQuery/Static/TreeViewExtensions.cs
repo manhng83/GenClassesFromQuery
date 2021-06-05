@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Static
+namespace GenClassesFromQuery.Static
 {
     public static class TreeViewExtensions
     {
@@ -12,7 +12,7 @@ namespace GenClassesFromDatabase.Static
         /// </summary>
         public static IEnumerable<TreeNode> FindNodesWhere(this TreeView treeView, Func<TreeNode, bool> criteria) =>
             FindNodesWhere(treeView.Nodes.OfType<TreeNode>(), criteria);
-        
+
         /// <summary>
         /// recursive node search over a set of nodes
         /// </summary>

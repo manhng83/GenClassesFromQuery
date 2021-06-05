@@ -1,12 +1,12 @@
-﻿using System;
+﻿using GenClassesFromQuery.Models;
+using GenClassesFromQuery.Services;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using WinForms.Library;
 using WinForms.Library.Extensions;
-using GenClassesFromDatabase.Models;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmConnections : Form
     {

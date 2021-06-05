@@ -1,4 +1,4 @@
-﻿namespace GenClassesFromDatabase.Forms
+﻿namespace GenClassesFromQuery.Forms
 {
     partial class frmQuery
     {
@@ -38,12 +38,12 @@
             this.btnImportExcel = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.queryEditor1 = new GenClassesFromDatabase.Controls.QueryEditor();
+            this.queryEditor1 = new GenClassesFromQuery.Controls.QueryEditor();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.resultClassBuilder1 = new GenClassesFromDatabase.Controls.ResultClassBuilder();
+            this.resultClassBuilder1 = new GenClassesFromQuery.Controls.ResultClassBuilder();
             this.splcQueryAndSourceTree = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.schemaBrowser1 = new GenClassesFromDatabase.Controls.SchemaBrowser();
+            this.schemaBrowser1 = new GenClassesFromQuery.Controls.SchemaBrowser();
             this.tabNavigation = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();

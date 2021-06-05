@@ -1,4 +1,4 @@
-﻿namespace GenClassesFromDatabase.Forms
+﻿namespace GenClassesFromQuery.Forms
 {
     partial class frmAbout
     {
@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "GenClassesFromDatabase";
+            this.label1.Text = "GenClassesFromQuery";
             // 
             // webUrlLinkLabel1
             // 
@@ -118,8 +118,8 @@
             this.webUrlLinkLabel2.Size = new System.Drawing.Size(279, 13);
             this.webUrlLinkLabel2.TabIndex = 6;
             this.webUrlLinkLabel2.TabStop = true;
-            this.webUrlLinkLabel2.Text = "https://github.com/adamfoneil/Postulate.GenClassesFromDatabase";
-            this.webUrlLinkLabel2.Url = "https://github.com/adamfoneil/Postulate.GenClassesFromDatabase";
+            this.webUrlLinkLabel2.Text = "https://github.com/adamfoneil/Postulate.GenClassesFromQuery";
+            this.webUrlLinkLabel2.Url = "https://github.com/adamfoneil/Postulate.GenClassesFromQuery";
             // 
             // label3
             // 
@@ -149,7 +149,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About GenClassesFromDatabase";
+            this.Text = "About GenClassesFromQuery";
             this.Load += new System.EventHandler(this.frmAbout_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GenClassesFromQuery.Forms;
+using System;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Forms;
 
-namespace GenClassesFromDatabase
+namespace GenClassesFromQuery
 {
     internal static class Program
     {

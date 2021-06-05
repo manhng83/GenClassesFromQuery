@@ -1,4 +1,9 @@
 ﻿using Excel2SqlServer.Library;
+using GenClassesFromQuery.Controls.Nodes;
+using GenClassesFromQuery.Interfaces;
+using GenClassesFromQuery.Models;
+using GenClassesFromQuery.Services;
+using GenClassesFromQuery.Services.Providers;
 using JsonSettings;
 using Microsoft.Data.SqlClient;
 using SqlSchema.Library;
@@ -11,19 +16,15 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Controls.Nodes;
-using GenClassesFromDatabase.Interfaces;
-using GenClassesFromDatabase.Models;
-using GenClassesFromDatabase.Services;
-using GenClassesFromDatabase.Services.Providers;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmQuery : Form, ISaveable
     {
         public string Filename { get; private set; }
 
         private bool _isModified;
+
         public bool IsModified
         {
             get => _isModified;
@@ -169,7 +170,6 @@ namespace GenClassesFromDatabase.Forms
                     {
                         MessageBox.Show(exc.Message);
                     }
-                    
                 };
 
                 btnScriptGen.DropDownItems.Add(btn);
@@ -316,7 +316,6 @@ namespace GenClassesFromDatabase.Forms
                             return;
                         }
                         break;
-
                 }
 
                 SaveQuery(fileName);
@@ -391,6 +390,6 @@ namespace GenClassesFromDatabase.Forms
         {
             SaveQuery(fileName);
             await Task.CompletedTask;
-        }        
+        }
     }
 }

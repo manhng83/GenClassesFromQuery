@@ -1,12 +1,12 @@
-﻿using System;
+﻿using GenClassesFromQuery.Services;
+using System;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmAbout : Form
     {
-        AppInstallHelper _installer = new AppInstallHelper();
+        private AppInstallHelper _installer = new AppInstallHelper();
 
         public frmAbout()
         {

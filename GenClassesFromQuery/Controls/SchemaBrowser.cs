@@ -1,4 +1,9 @@
-﻿using SqlSchema.Library;
+﻿using GenClassesFromQuery.Controls.Nodes;
+using GenClassesFromQuery.Forms;
+using GenClassesFromQuery.Models;
+using GenClassesFromQuery.Services;
+using GenClassesFromQuery.Static;
+using SqlSchema.Library;
 using SqlSchema.Library.Interfaces;
 using SqlSchema.Library.Models;
 using SqlSchema.SqlServer;
@@ -9,14 +14,9 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Controls.Nodes;
-using GenClassesFromDatabase.Forms;
-using GenClassesFromDatabase.Models;
-using GenClassesFromDatabase.Services;
-using GenClassesFromDatabase.Static;
 using Table = SqlSchema.Library.Models.Table;
 
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     public partial class SchemaBrowser : UserControl
     {
@@ -30,8 +30,11 @@ namespace GenClassesFromDatabase.Controls
         private JoinResolver _joinResolver;
 
         public event EventHandler<string> OperationStarted;
+
         public event EventHandler OperationEnded;
+
         public event EventHandler<ColumnContainerNode> ModelClassRequested;
+
         public event EventHandler SchemaInspected;
 
         private TableNode _selectedTable;
@@ -372,10 +375,10 @@ namespace GenClassesFromDatabase.Controls
                 var table = _selectedTable.Table;
                 var columns = table.Columns.Where(col => !col.Name.Equals(table.IdentityColumn)).OrderBy(col => col.IsNullable);
 
-                var csharp = $@"new {table.Name}() 
+                var csharp = $@"new {table.Name}()
                 {{
-                    {string.Join(",\r\n", columns.Select(col => (!col.IsNullable) ? 
-                        $"{col.Name} = /* required */" : 
+                    {string.Join(",\r\n", columns.Select(col => (!col.IsNullable) ?
+                        $"{col.Name} = /* required */" :
                         $"/* {col.Name} = optional */"))}
                 }}";
 
@@ -401,7 +404,7 @@ namespace GenClassesFromDatabase.Controls
             {
                 var tableNodes = ((tvwObjects.CheckBoxes) ?
                     tvwObjects.FindNodesOfType<TableNode>().Where(nd => nd.Checked) :
-                    tvwObjects.FindNodesOfType<TableNode>())                    
+                    tvwObjects.FindNodesOfType<TableNode>())
                     .ToArray();
 
                 //selected tables or all tables
@@ -419,7 +422,7 @@ namespace GenClassesFromDatabase.Controls
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);                
+                MessageBox.Show(exc.Message);
             }
         }
     }

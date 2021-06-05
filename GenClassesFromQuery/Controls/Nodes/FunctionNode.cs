@@ -1,7 +1,7 @@
 ﻿using SqlSchema.Library.Models;
 using System.Linq;
 
-namespace GenClassesFromDatabase.Controls.Nodes
+namespace GenClassesFromQuery.Controls.Nodes
 {
     public class FunctionNode : ColumnContainerNode
     {

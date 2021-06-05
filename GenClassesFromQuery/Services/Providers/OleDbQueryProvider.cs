@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.OleDb;
 
-namespace GenClassesFromDatabase.Services.Providers
+namespace GenClassesFromQuery.Services.Providers
 {
     public class OleDbQueryProvider : QueryProvider
     {

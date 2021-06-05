@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Controls.Nodes
+namespace GenClassesFromQuery.Controls.Nodes
 {
     public abstract class ColumnContainerNode : TreeNode
     {
@@ -28,7 +28,7 @@ namespace GenClassesFromDatabase.Controls.Nodes
 
         public abstract bool SqlQueryEnabled { get; }
         public abstract string SqlQuery { get; }
-        public abstract string ModelClassName { get; }        
+        public abstract string ModelClassName { get; }
         public abstract DbObject DbObject { get; }
         public abstract bool HasViewableDefinition { get; }
     }

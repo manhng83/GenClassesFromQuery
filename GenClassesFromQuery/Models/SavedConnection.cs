@@ -1,4 +1,5 @@
-﻿using JsonSettings;
+﻿using GenClassesFromQuery.Services;
+using JsonSettings;
 using JsonSettings.Library;
 using MySql.Data.MySqlClient;
 using System;
@@ -7,9 +8,8 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Models
+namespace GenClassesFromQuery.Models
 {
     public class SavedConnections : SettingsBase
     {
@@ -20,7 +20,7 @@ namespace GenClassesFromDatabase.Models
             if (Connections == null) Connections = new List<SavedConnection>();
         }
 
-        public override string Filename => BuildPath(Environment.SpecialFolder.ApplicationData, "GenClassesFromDatabase", "Connections.json");
+        public override string Filename => BuildPath(Environment.SpecialFolder.ApplicationData, "GenClassesFromQuery", "Connections.json");
     }
 
     public class SavedConnection

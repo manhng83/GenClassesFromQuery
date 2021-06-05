@@ -1,5 +1,5 @@
 ﻿
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     partial class frmMigrationBuilder
     {
@@ -76,8 +76,8 @@ namespace GenClassesFromDatabase.Forms
             this.pbMain = new System.Windows.Forms.ToolStripProgressBar();
             this.tslProgress = new System.Windows.Forms.ToolStripStatusLabel();
             this.tslCancel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.migrationStep1 = new GenClassesFromDatabase.Controls.MigrationStep();
-            this.consoleTextBox1 = new GenClassesFromDatabase.Controls.ConsoleTextBox();
+            this.migrationStep1 = new GenClassesFromQuery.Controls.MigrationStep();
+            this.consoleTextBox1 = new GenClassesFromQuery.Controls.ConsoleTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();

@@ -1,4 +1,4 @@
-﻿namespace GenClassesFromDatabase.Controls
+﻿namespace GenClassesFromQuery.Controls
 {
     partial class SchemaBrowser
     {

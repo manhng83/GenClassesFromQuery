@@ -6,7 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public enum ProviderType
     {

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GenClassesFromDatabase")]
+[assembly: AssemblyTitle("GenClassesFromQuery")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nguyen Viet Manh")]
-[assembly: AssemblyProduct("GenClassesFromDatabase")]
+[assembly: AssemblyProduct("GenClassesFromQuery")]
 [assembly: AssemblyCopyright("Copyright © Nguyen Viet Manh 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

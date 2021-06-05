@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     public class ConsoleTextBox : TextBox
     {

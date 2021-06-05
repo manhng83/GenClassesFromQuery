@@ -1,4 +1,4 @@
-﻿namespace GenClassesFromDatabase.Forms
+﻿namespace GenClassesFromQuery.Forms
 {
 	partial class frmContainer
 	{
@@ -187,7 +187,7 @@
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.Name = "frmContainer";
-            this.Text = "GenClassesFromDatabase";
+            this.Text = "GenClassesFromQuery";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmContainer_FormClosing);
             this.Load += new System.EventHandler(this.frmContainer_Load);
             this.menuStrip1.ResumeLayout(false);

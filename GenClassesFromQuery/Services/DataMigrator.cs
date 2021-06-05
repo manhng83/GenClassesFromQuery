@@ -2,6 +2,7 @@
 using Dapper;
 using Dapper.CX.SqlServer;
 using DataTables.Library;
+using GenClassesFromQuery.Models;
 using Microsoft.Data.SqlClient;
 using SqlIntegration.Library;
 using SqlIntegration.Library.Classes;
@@ -16,19 +17,18 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using GenClassesFromDatabase.Models;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public class DataMigrator
     {
         private readonly SavedConnections _savedConnections;
-        
+
         private CancellationTokenSource _cts;
 
         public DataMigrator(SavedConnections savedConnections)
         {
-            _savedConnections = savedConnections;        
+            _savedConnections = savedConnections;
         }
 
         public string CurrentFilename { get; set; }
@@ -50,7 +50,7 @@ namespace GenClassesFromDatabase.Services
                 SourceFromWhere = fromWhere,
                 DestTable = destTable
             };
-            
+
             await AddStepColumnsAsync(sourceConnection, destConnection, step, parameters);
 
             return step;
@@ -58,11 +58,11 @@ namespace GenClassesFromDatabase.Services
 
         public async Task AddStepColumnsAsync(DataMigration migration, DataMigration.Step step) =>
             await AddStepColumnsAsync(migration.SourceConnection, migration.DestConnection, step, migration.GetParameters());
-        
+
         public async Task AddStepColumnsAsync(
             string sourceConnection, string destConnection, DataMigration.Step step, object parameters = null)
         {
-            List<DataMigration.Column> result = new List<DataMigration.Column>();            
+            List<DataMigration.Column> result = new List<DataMigration.Column>();
 
             await ExecuteWithConnectionsAsync(sourceConnection, destConnection, async (source, dest) =>
             {
@@ -95,7 +95,7 @@ namespace GenClassesFromDatabase.Services
                 result.AddRange(columns);
             });
 
-            step.Columns = result;            
+            step.Columns = result;
 
             IEnumerable<DataRow> nonIdentityColumns(DataTable schemaTable) => schemaTable.AsEnumerable().Where(row => !IsIdentity(row));
 
@@ -105,10 +105,10 @@ namespace GenClassesFromDatabase.Services
                 {
                     return ColumnName(schemaTable.AsEnumerable().First(row => IsIdentity(row)));
                 }
-                catch 
+                catch
                 {
                     return null;
-                }                
+                }
             }
         }
 
@@ -159,7 +159,7 @@ namespace GenClassesFromDatabase.Services
         private Dictionary<string, string> GetForeignKeyMapping(DataMigration.Step step) =>
             step.Columns
                 .Where(col => !string.IsNullOrEmpty(col.KeyMapTable) && !col.KeyMapTable.StartsWith("@"))
-                .ToDictionary(col => col.Dest, col => col.KeyMapTable);        
+                .ToDictionary(col => col.Dest, col => col.KeyMapTable);
 
         private async Task<(DataTable table, string sql)> QuerySourceTableAsync(SqlConnection cnSource, DataMigration.Step step, object parameters = null)
         {
@@ -274,7 +274,7 @@ namespace GenClassesFromDatabase.Services
             // in AH4 when mapping from dbo.Customer, if the sourceId is negative, it's being used as a Folder.ParentId.
             // I didn't have a way to do this delcaratively within the migration model, so it's hardcoded into the migrator.
             result.OnMappingException = async (exc, cn, obj, sourceId, txn) =>
-            {                
+            {
                 if (sourceId < 0 && obj.Equals(DbObject.Parse("dbo.Customer")))
                 {
                     return await result.GetNewIdAsync(cn, obj, sourceId * -1, txn);
@@ -293,7 +293,7 @@ namespace GenClassesFromDatabase.Services
         }
 
         private async Task<bool> AnalyzeInsertExceptionAsync(
-            SqlConnection connection, InsertExceptionType type, DataRow dataRow, 
+            SqlConnection connection, InsertExceptionType type, DataRow dataRow,
             Exception exception, Dictionary<string, object> values)
         {
             KeyViolationValues = values;
@@ -383,7 +383,7 @@ namespace GenClassesFromDatabase.Services
         /// runs a step then rolls it back, collecting any error messages and SQL artifacts that result
         /// </summary>
         public async Task<MigrationResult> ValidateStepAsync(DataMigration.Step step, DataMigration migration, int maxRows = 10)
-        {            
+        {
             var result = new MigrationResult();
             result.Action = "tested";
 
@@ -423,10 +423,10 @@ namespace GenClassesFromDatabase.Services
             MappingProgress result = null;
 
             await ExecuteWithConnectionsAsync(migration, async (source, dest) =>
-            {                
+            {
                 var sql = GetProgressQuery(step);
                 var table = (await source.QueryTableAsync(sql, migration.GetParameters())).AsEnumerable().Select(row => new MappingProgress(row));
-                result = table.FirstOrDefault();                
+                result = table.FirstOrDefault();
             });
 
             return result;
@@ -439,9 +439,9 @@ namespace GenClassesFromDatabase.Services
             var destTable = DbObject.Parse(step.DestTable);
             var keymapTable = SqlMigrator<int>.KeyMapTable;
 
-            return 
+            return
                 $@"WITH {source.cte}[inner] AS (
-                    SELECT 
+                    SELECT
                         [SourceId],
                         [NewId]
                     FROM (
@@ -485,17 +485,17 @@ namespace GenClassesFromDatabase.Services
                 $@"WITH {source.cte}[source] AS (
                     SELECT
                         {GetStepColumnList(step, sourceIdAlias)}
-                    FROM 
-                        {source.body}                    
-                ) SELECT 
+                    FROM
+                        {source.body}
+                ) SELECT
                     [source].*
-                FROM 
+                FROM
                     [source]
-                WHERE 
+                WHERE
                     NOT EXISTS(
                         SELECT 1 FROM [{keymapTable.Schema}].[{keymapTable.Name}] [km]
-                        WHERE 
-                            [km].[Schema]='{destTable.Schema}' AND 
+                        WHERE
+                            [km].[Schema]='{destTable.Schema}' AND
                             [km].[TableName]='{destTable.Name}' AND
                             [km].[SourceId]=[source].[{sourceIdAlias}]
                         )";
@@ -514,24 +514,24 @@ namespace GenClassesFromDatabase.Services
                 string.Empty;
 
             return (cte, body);
-        }      
+        }
 
         private async Task RunStepInnerAsync(
-            DataMigration.Step step, int maxRows, 
-            SqlConnection dest, SqlMigrator<int> migrator, MigrationResult result, 
+            DataMigration.Step step, int maxRows,
+            SqlConnection dest, SqlMigrator<int> migrator, MigrationResult result,
             DataTable table, SqlTransaction txn = null)
-        {            
+        {
             var intoTable = DbObject.Parse(step.DestTable);
             var mappings = GetForeignKeyMapping(step);
             var inlineMappings = GetInlineMappings(step);
-            
+
             _cts = new CancellationTokenSource();
 
             try
             {
                 result.RowsCopied = await migrator.CopyRowsAsync(
                     dest, table, step.DestIdentityColumn, intoTable.Schema, intoTable.Name, _cts,
-                    mappings, onEachRow: (cmd, row) => ApplyInlineMapping(step, cmd, row, inlineMappings), 
+                    mappings, onEachRow: (cmd, row) => ApplyInlineMapping(step, cmd, row, inlineMappings),
                     txn: txn, maxRows: maxRows);
                 result.Success = true;
                 result.Message = "Step succeeded.";
@@ -549,6 +549,7 @@ namespace GenClassesFromDatabase.Services
             /// DataMigration.Column.Key or "_step"
             /// </summary>
             public string Context { get; set; }
+
             public string Message { get; set; }
         }
 
@@ -557,10 +558,10 @@ namespace GenClassesFromDatabase.Services
             public bool Success { get; set; }
             public string Message { get; set; }
             public string SourceSql { get; set; }
-            public string InsertSql { get; set; }            
+            public string InsertSql { get; set; }
             public int RowsCopied { get; set; }
             public int RowsSkipped { get; set; }
-            public string Action { get; set; }            
+            public string Action { get; set; }
         }
 
         public class MappingProgress
@@ -584,18 +585,22 @@ namespace GenClassesFromDatabase.Services
 
             [Category("DbObject")]
             public string Schema { get; set; }
+
             [Category("DbObject")]
             public string Name { get; set; }
+
             /// <summary>
             /// number of rows in the migrate.KeyMap table for this DestTable
             /// </summary>
             [Category("Rows")]
             public int MappedRows { get; set; }
+
             /// <summary>
             /// number of rows that don't have a NewId
             /// </summary>
             [Category("Rows")]
             public int UnmappedRows { get; set; }
+
             /// <summary>
             /// total number of rows in the source query
             /// </summary>
@@ -612,5 +617,5 @@ namespace GenClassesFromDatabase.Services
 
             public string Sql { get; }
         }
-    }    
+    }
 }

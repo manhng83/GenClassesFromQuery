@@ -1,9 +1,9 @@
-﻿using SqlSchema.Library.Models;
+﻿using GenClassesFromQuery.Static;
+using SqlSchema.Library.Models;
 using System.Collections.Generic;
 using System.Linq;
-using GenClassesFromDatabase.Static;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     /// <summary>
     /// stores user-defined table name abbreviations (aliases) associated full table names
@@ -21,6 +21,7 @@ namespace GenClassesFromDatabase.Services
         }
 
         private string _connectionName;
+
         public string ConnectionName
         {
             get { return _connectionName; }

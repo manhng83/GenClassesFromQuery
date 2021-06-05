@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public class Parameter
     {

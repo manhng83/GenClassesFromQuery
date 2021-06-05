@@ -1,5 +1,5 @@
 ﻿
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     partial class frmCopyModelClass
     {

@@ -1,14 +1,14 @@
 ﻿using ClosedXML.Excel;
+using GenClassesFromQuery.Interfaces;
+using GenClassesFromQuery.Models;
 using JsonSettings.Library;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WinForms.Library.Models;
-using GenClassesFromDatabase.Interfaces;
-using GenClassesFromDatabase.Models;
 
-namespace GenClassesFromDatabase.Forms
+namespace GenClassesFromQuery.Forms
 {
     public partial class frmContainer : Form
     {

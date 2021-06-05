@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GenClassesFromDatabase.Controls.Nodes
+namespace GenClassesFromQuery.Controls.Nodes
 {
     public class TableNode : ColumnContainerNode
     {
@@ -45,6 +45,7 @@ namespace GenClassesFromDatabase.Controls.Nodes
         public override bool HasViewableDefinition => false;
 
         private string _alias;
+
         public string Alias
         {
             get => _alias;

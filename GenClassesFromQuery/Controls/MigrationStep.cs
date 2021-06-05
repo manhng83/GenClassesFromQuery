@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
-using GenClassesFromDatabase.Models;
+﻿using GenClassesFromQuery.Models;
+using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     public partial class MigrationStep : UserControl
     {

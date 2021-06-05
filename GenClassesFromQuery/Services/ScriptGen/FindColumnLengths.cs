@@ -1,13 +1,12 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 
-namespace GenClassesFromDatabase.Services.ScriptGen
+namespace GenClassesFromQuery.Services.ScriptGen
 {
     public class FindColumnLengths : ScriptGenBase
     {
         public override string Title => "Find Column Lengths";
 
-        public override string Sql => 
+        public override string Sql =>
             @"SELECT
 	            SCHEMA_NAME([tbl].[schema_id]) AS [Schema],
 	            [tbl].[name] AS [Table],

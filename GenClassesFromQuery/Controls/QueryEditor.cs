@@ -1,4 +1,7 @@
-﻿using JsonSettings;
+﻿using GenClassesFromQuery.Forms;
+using GenClassesFromQuery.Models;
+using GenClassesFromQuery.Services;
+using JsonSettings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,16 +9,15 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using WinForms.Library.Extensions;
-using GenClassesFromDatabase.Forms;
-using GenClassesFromDatabase.Models;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     public partial class QueryEditor : UserControl
     {
         public event EventHandler Executed;
+
         public event EventHandler<string> JoinResolutionRequested;
+
         public event EventHandler Modified;
 
         public QueryEditor()

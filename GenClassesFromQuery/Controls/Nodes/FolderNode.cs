@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Controls.Nodes
+namespace GenClassesFromQuery.Controls.Nodes
 {
     public class FolderNode : TreeNode
     {

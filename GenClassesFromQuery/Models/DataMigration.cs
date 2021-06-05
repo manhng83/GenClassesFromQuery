@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 
-namespace GenClassesFromDatabase.Models
+namespace GenClassesFromQuery.Models
 {
     public class DataMigration
     {
@@ -38,7 +37,7 @@ namespace GenClassesFromDatabase.Models
             /// DestTable's identity column, provides the NewId in migration tracking
             /// </summary>
             public string DestIdentityColumn { get; set; }
-            
+
             public string Description { get; set; }
 
             public List<Column> Columns { get; set; }
@@ -48,7 +47,7 @@ namespace GenClassesFromDatabase.Models
         {
             public string Source { get; set; }
             public string Dest { get; set; }
-            public string KeyMapTable { get; set; }                        
+            public string KeyMapTable { get; set; }
 
             [JsonIgnore]
             public string Key { get => $"{Source}:{Dest}"; }
@@ -66,6 +65,6 @@ namespace GenClassesFromDatabase.Models
             public string Value { get; set; }
         }
 
-        public Dictionary<string, string> GetParameters() => Parameters?.ToDictionary(row => row.Name, row => row.Value);        
+        public Dictionary<string, string> GetParameters() => Parameters?.ToDictionary(row => row.Name, row => row.Value);
     }
 }

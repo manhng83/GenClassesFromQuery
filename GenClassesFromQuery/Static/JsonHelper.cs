@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 
-namespace GenClassesFromDatabase.Static
+namespace GenClassesFromQuery.Static
 {
     internal static class JsonHelper
     {

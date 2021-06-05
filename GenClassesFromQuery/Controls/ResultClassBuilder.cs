@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GenClassesFromQuery.Services;
+using System;
 using System.Windows.Forms;
-using GenClassesFromDatabase.Services;
 
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     public partial class ResultClassBuilder : UserControl
     {

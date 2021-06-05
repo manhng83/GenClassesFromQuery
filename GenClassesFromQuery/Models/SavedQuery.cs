@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using GenClassesFromDatabase.Services;
+﻿using GenClassesFromQuery.Services;
+using System.Collections.Generic;
 
-namespace GenClassesFromDatabase.Models
+namespace GenClassesFromQuery.Models
 {
     public class SavedQuery
     {

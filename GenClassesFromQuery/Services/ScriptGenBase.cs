@@ -1,10 +1,9 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     /// <summary>
     /// appears in menu as a script generator that can be invoked.
@@ -21,9 +20,9 @@ namespace GenClassesFromDatabase.Services
         public string Generate(QueryProvider queryProvider)
         {
             StringBuilder output = new StringBuilder();
-            
+
             var queryResult = queryProvider.Execute(Sql, nameof(ScriptGenBase), Enumerable.Empty<Parameter>());
-            
+
             foreach (DataRow row in queryResult.DataTable.Rows)
             {
                 output.AppendLine(GetScriptCommand(row));

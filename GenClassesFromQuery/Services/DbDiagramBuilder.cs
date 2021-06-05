@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public class DbDiagramBuilder
     {
@@ -13,9 +13,9 @@ namespace GenClassesFromDatabase.Services
         public StringBuilder GetSyntax(IEnumerable<Table> tables, IEnumerable<ForeignKey> foreignKeys)
         {
             var result = new StringBuilder();
-            
+
             var foreignKeysByTable = foreignKeys.ToLookup(fk => fk.ReferencingTable);
-            
+
             foreach (var tbl in tables)
             {
                 var columns = ColumnSyntax(tbl, foreignKeysByTable[tbl], tables);
@@ -33,15 +33,15 @@ namespace GenClassesFromDatabase.Services
         }
 
         private IEnumerable<string> ColumnSyntax(Table table, IEnumerable<ForeignKey> foreignKeys, IEnumerable<Table> tables)
-        {            
-            var foreignKeysByColumn = foreignKeys                
+        {
+            var foreignKeysByColumn = foreignKeys
                 .ToDictionary(item => item.Columns.First().ReferencingName);
 
             var indexes = table.Indexes.ToLookup(ndx => ndx.Type);
             var pkColumns = (indexes.Contains(IndexType.PrimaryKey)) ?
                 indexes[IndexType.PrimaryKey].SelectMany(ndx => ndx.Columns).Select(col => col.Name) :
                 Enumerable.Empty<string>();
-            
+
             foreach (var col in table.Columns)
             {
                 string result = $"{col.Name} {col.DataType}";

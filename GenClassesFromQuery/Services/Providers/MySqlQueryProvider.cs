@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace GenClassesFromDatabase.Services.Providers
+namespace GenClassesFromQuery.Services.Providers
 {
     public class MySqlQueryProvider : QueryProvider
     {

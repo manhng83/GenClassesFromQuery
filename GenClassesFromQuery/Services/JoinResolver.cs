@@ -1,10 +1,10 @@
-﻿using SqlSchema.Library.Models;
+﻿using GenClassesFromQuery.Models;
+using SqlSchema.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GenClassesFromDatabase.Models;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     public class JoinResolver
     {
@@ -136,6 +136,7 @@ namespace GenClassesFromDatabase.Services
             /// from referencing to referenced
             /// </summary>
             Up,
+
             /// <summary>
             /// from referenced to referencing
             /// </summary>

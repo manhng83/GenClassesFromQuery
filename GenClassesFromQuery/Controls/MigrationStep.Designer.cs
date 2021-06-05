@@ -1,5 +1,5 @@
 ﻿
-namespace GenClassesFromDatabase.Controls
+namespace GenClassesFromQuery.Controls
 {
     partial class MigrationStep
     {

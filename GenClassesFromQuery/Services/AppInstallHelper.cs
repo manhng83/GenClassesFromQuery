@@ -2,11 +2,11 @@
 using System;
 using System.Windows.Forms;
 
-namespace GenClassesFromDatabase.Services
+namespace GenClassesFromQuery.Services
 {
     internal class AppInstallHelper : InstallHelper
     {
-        public AppInstallHelper() : base(Version.Parse(Application.ProductVersion), "aosoftware", "install", "GenClassesFromDatabaseSetup.exe")
+        public AppInstallHelper() : base(Version.Parse(Application.ProductVersion), "aosoftware", "install", "GenClassesFromQuerySetup.exe")
         {
         }
 
