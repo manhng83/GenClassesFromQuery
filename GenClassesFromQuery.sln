@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenClassesFromQuery", "GenC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenClassesFromQuery.CSharp", "GenClassesFromQuery.CSharp\GenClassesFromQuery.CSharp.csproj", "{00238961-6211-49FA-AE88-D5FB87551D9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkGenUI", "EntityFrameworkGenUI\EntityFrameworkGenUI.csproj", "{1CED8F7E-E5E6-415E-994D-F693028966D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{00238961-6211-49FA-AE88-D5FB87551D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00238961-6211-49FA-AE88-D5FB87551D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00238961-6211-49FA-AE88-D5FB87551D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CED8F7E-E5E6-415E-994D-F693028966D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CED8F7E-E5E6-415E-994D-F693028966D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CED8F7E-E5E6-415E-994D-F693028966D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CED8F7E-E5E6-415E-994D-F693028966D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -292,7 +292,7 @@
     <Content Include="App.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenClassesFromDatabase.CSharp\GenClassesFromQuery.CSharp.csproj">
+    <ProjectReference Include="..\GenClassesFromQuery.CSharp\GenClassesFromQuery.CSharp.csproj">
       <Project>{00238961-6211-49fa-ae88-d5fb87551d9a}</Project>
       <Name>GenClassesFromQuery.CSharp</Name>
     </ProjectReference>

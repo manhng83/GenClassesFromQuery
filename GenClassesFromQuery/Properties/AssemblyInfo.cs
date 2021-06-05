@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GenClassesFromDatabase")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Adam O'Neil Software")]
+[assembly: AssemblyCompany("Nguyen Viet Manh")]
 [assembly: AssemblyProduct("GenClassesFromDatabase")]
-[assembly: AssemblyCopyright("Copyright © Adam O'Neil Software 2018")]
+[assembly: AssemblyCopyright("Copyright © Nguyen Viet Manh 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
