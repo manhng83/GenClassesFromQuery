@@ -1,4 +1,4 @@
-# Database support:
+# Generate classes from query result output support the following database:
 + MySql
 + SqlServer
 + OleDb
