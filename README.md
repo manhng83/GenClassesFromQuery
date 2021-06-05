@@ -1,3 +1,9 @@
+# Database support:
++ MySql
++ SqlServer
++ OleDb
++ SqlCe
+
 [![download](https://img.shields.io/badge/Download-Installer-blue.svg)](https://aosoftware.blob.core.windows.net/install/ZingerSetup.exe)
 
 This is a C# WinForms app that helps you generate C# POCO classes to encapsulate results of SQL queries as well as to test dynamic query parameters and preview results. For example, given a query like this:
@@ -23,17 +29,6 @@ Zinger infers the property types from the underlying table column types in the b
 In addition to generating POCO result classes, you can also use Zinger to debug and create [Dapper.QX Query](https://github.com/adamfoneil/Dapper.QX) instances. This is how I handle inline SQL in my applications -- allowing me to balance the productivity and convenience of inline SQL with its inherent liabilities.
 
 ("Zinger" was kind of a code name I was using for this during development. It's not one of my better code names, though, and it never stuck. Some of the source assets use this name, and it's too much trouble to rename it.)
-
-## Downloads
-The latest release is now available [here](https://aosoftware.blob.core.windows.net/install/ZingerSetup.exe).
-
-There's also a NuGet package for the C# generation features:
-
-[![Nuget](https://img.shields.io/nuget/v/AO.Zinger.CSharp)](https://www.nuget.org/packages/AO.Zinger.CSharp/)
-
-built from the [Zinger.CSharp project](https://github.com/adamfoneil/Postulate.Zinger/tree/master/Zinger.CSharp). This powers a [SqlChartify](https://sqlchartify.azurewebsites.net/) feature.
-
-I'm not going to maintain GitHub releases anymore unless sporadically, so please use the installer download link above.
 
 ## How to use
 The desktop icon looks like this:
